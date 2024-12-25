@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Emergency Helplines</title>
+    <link rel="stylesheet" href="mainpage.css"> <!-- Assuming the same CSS file for consistency -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Basic layout for sidebar and content */
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Sidebar Styling (Fixed Position, Consistent with mainpage.html) */
+        .side-menu {
+            width: 200px;  /* Same width as in mainpage.html */
+            background-color: var(--card-bg);  /* Use the same background as in mainpage */
+            color: var(--text-color);  /* Ensure text color is consistent */
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            box-shadow: 2px 0 5px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        .side-menu .logo {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: var(--primary-color);  /* Same color as in mainpage */
+        }
+
+        .side-menu .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu .nav-links li {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .side-menu .nav-links a {
+            color: var(--text-color);  /* Ensure color consistency */
+            text-decoration: none;
+            font-size: 1.2em;
+            display: block;
+            padding: 10px;
+        }
+
+        .side-menu .nav-links a:hover,
+        .side-menu .nav-links a.active {
+            background-color: var(--primary-color);  /* Same active hover background as in mainpage */
+            color: white;
+        }
+
+        /* Main content area (Make space for the sidebar) */
+        .main-content {
+            margin-left: 200px;  /* Match the width of the sidebar */
+            padding: 20px;
+            width: calc(100% - 200px);  /* Ensure the content doesn't overflow */
+            overflow-y: auto;
+        }
+
+        /* Contact Page Styling */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--card-bg);  /* Consistent background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        .helpline-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .helpline-item {
+            background-color: #e9ecef;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .helpline-item:hover {
+            background-color: #d1d8e0;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .helpline-text {
+            flex: 1;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .helpline-number {
+            background-color: var(--primary-color);  /* Consistent with the main theme */
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .helpline-number:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="switch-label">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </label>
+    </div>
+
+    <!-- Navigation Bar (Left-Side Menu) -->
+    <nav class="side-menu">
+        <div class="logo">M4CAST</div>
+        <ul class="nav-links">
+            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Contact Page Content -->
+        <div class="container">
+            <h1>Contact Us - Emergency Helplines</h1>
+            <p>If you're stuck in a bad weather situation or any other emergency, here are some important helplines that can help you.</p>
+
+            <h2>Emergency Contact Numbers</h2>
+            <ul class="helpline-list">
+                <li class="helpline-item">
+                    <div class="helpline-text">
+                        <strong>Emergency Helpline (Police, Fire, Ambulance):</strong>
+                        <p>This number connects you to the Police, Fire Services, Ambulance, and Disaster Management Teams.</p>
+                    </div>
+                    <a href="tel:+91112" class="helpline-number">112</a>
+                </li>
+
+                <li class="helpline-item">
+                    <div class="helpline-text">
+                        <strong>National Disaster Management (NDMA):</strong>
+                        <p>For guidance and help in case of natural disasters like floods, cyclones, and storms.</p>
+                    </div>
+                    <a href="tel:+911078" class="helpline-number">1078</a>
+                </li>
+
+                <li class="helpline-item">
+                    <div class="helpline-text">
+                        <strong>Ambulance & Medical Emergency:</strong>
+                        <p>Dial this number for medical emergencies, including accidents or health issues.</p>
+                    </div>
+                    <a href="tel:+910108" class="helpline-number">108</a>
+                </li>
+
+                <li class="helpline-item">
+                    <div class="helpline-text">
+                        <strong>Indian Meteorological Department (IMD):</strong>
+                        <p>For weather updates, warnings, and alerts during severe weather conditions like cyclones and heavy rainfall.</p>
+                    </div>
+                    <a href="tel:+919124623532" class="helpline-number">+91 11 24623535</a>
+                </li>
+
+                <li class="helpline-item">
+                    <div class="helpline-text">
+                        <strong>Roadside Assistance (IRDA):</strong>
+                        <p>If your vehicle breaks down or you are stuck due to bad weather, call for roadside help.</p>
+                    </div>
+                    <a href="tel:+91033" class="helpline-number">1033</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Emergency Helplines | All Rights Reserved</p>
+    </footer>
+
+    <script src="mainpage.js"></script>
+</body>
+</html>
