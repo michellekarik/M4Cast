@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Tips & Advice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .side-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100vh;
+            background: #2c3e50;
+            padding: 20px;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .side-menu .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .side-menu .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu .nav-links li a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            background: #34495e;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .side-menu .nav-links li a:hover {
+            background: #1abc9c;
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 220px; /* Adjust for the sidebar */
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        h1, h2 {
+            color: #909daa;
+        }
+
+        .tips-container, .advice-container {
+            margin-bottom: 30px;
+        }
+
+        .tip {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .tip h3 {
+            color: #2980b9;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="side-menu">
+        <div class="logo">Weather Tips</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Forecast</a></li>
+            <li><a href="#">Tips & Advice</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <header>
+            <h1>Weather Tips & Advice</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Forecast</a></li>
+                    <li><a href="#">Tips & Advice</a></li>
+                </ul>
+            </nav>
+        </header>
+   
+        <section class="tips-container">
+            <h2>Weather Tips for All Seasons</h2>
+           
+            <div class="tip" id="cold-weather">
+                <h3>Cold Weather Tips</h3>
+                <p><strong>Layer up:</strong> Wear multiple layers of clothing to trap warmth.</p>
+                <p><strong>Stay hydrated:</strong> Drink warm fluids to maintain body temperature.</p>
+                <p><strong>Wear a hat and gloves:</strong> Keep extremities warm to prevent heat loss.</p>
+            </div>
+
+            <div class="tip" id="rainy-weather">
+                <h3>Rainy Weather Tips</h3>
+                <p><strong>Carry an umbrella:</strong> Always be prepared for sudden rain showers.</p>
+                <p><strong>Wear waterproof shoes:</strong> Protect your feet from getting soaked.</p>
+                <p><strong>Avoid flooded areas:</strong> Be cautious of walking in flooded streets.</p>
+            </div>
+
+            <div class="tip" id="hot-weather">
+                <h3>Hot Weather Tips</h3>
+                <p><strong>Stay cool:</strong> Wear light clothing and stay in shaded areas.</p>
+                <p><strong>Use sunscreen:</strong> Protect your skin from harmful UV rays.</p>
+                <p><strong>Stay hydrated:</strong> Drink plenty of water to avoid dehydration.</p>
+            </div>
+
+            <div class="tip" id="stormy-weather">
+                <h3>Stormy Weather Tips</h3>
+                <p><strong>Stay indoors:</strong> Avoid going outside during a storm to stay safe.</p>
+                <p><strong>Secure your windows:</strong> Close windows and secure outdoor objects that could become dangerous.</p>
+                <p><strong>Listen to weather alerts:</strong> Pay attention to warnings from local authorities.</p>
+            </div>
+        </section>
+
+        <section class="advice-container">
+            <h2>General Weather Safety Advice</h2>
+            <ul>
+                <li><strong>Know the forecast:</strong> Always check the weather before you leave home.</li>
+                <li><strong>Prepare for the unexpected:</strong> Carry items like sunscreen, water, and extra layers, depending on the weather.</li>
+                <li><strong>Be mindful of temperature:</strong> Both extreme heat and cold can be dangerous.</li>
+                <li><strong>Stay informed:</strong> Keep an eye on storm warnings, especially during hurricane or tornado season.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Weather Forecast App. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
