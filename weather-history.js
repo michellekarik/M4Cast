@@ -1,54 +1,54 @@
-document.getElementById('city-form').addEventListener('submit', function (event) {
+document.getElementById("weather-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const cityName = document.getElementById('city-name').value.trim();
-    const countryCode = document.getElementById('country-code').value.trim();
+    // Get the user's input
+    const city = document.getElementById("city").value.trim();
+    const date = document.getElementById("date").value;
 
-    if (cityName && countryCode) {
-        // Make an API call to the backend
-        fetch(`/weather-history?city=${cityName}&country=${countryCode}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.current) {
-                    displayWeatherData(data.current);
-                } else {
-                    displayErrorMessage("No weather data available.");
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching weather data:', error);
-                displayErrorMessage("Error fetching weather data.");
-            });
-    } else {
-        displayErrorMessage("Please enter both city and country code.");
+    // Check if both fields are filled
+    if (!city || !date) {
+        displayError("Please provide both city name and a valid date.");
+        return;
     }
+
+    // Hardcoded API key (replace with your actual API key)
+    const apiKey = "bb29d7d7b652d0be564bd43ca1dd2f86"; // Replace with your actual OpenWeatherMap API key
+
+    // API call to OpenWeatherMap Current Weather API
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+    // Fetch the current weather data
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.cod === 200) {
+                displayWeather(data, date);
+            } else {
+                displayError("Location not found.");
+            }
+        })
+        .catch(error => {
+            displayError("An error occurred: " + error);
+        });
 });
 
-// Function to display weather data
-function displayWeatherData(weatherData) {
-    const weatherHistoryContainer = document.getElementById('weather-history');
-    weatherHistoryContainer.innerHTML = ''; // Clear previous content
+function displayWeather(data, date) {
+    const result = document.getElementById("weather-result");
+    const weatherDescription = data.weather[0].description;
+    const temperature = (data.main.temp - 273.15).toFixed(2); // Convert Kelvin to Celsius
+    const humidity = data.main.humidity;
+    const windSpeed = data.wind.speed;
 
-    const weatherEntry = document.createElement('div');
-    weatherEntry.className = 'weather-entry';
-
-    const timestamp = new Date(weatherData.dt * 1000).toLocaleString(); // Convert UNIX timestamp to human-readable date/time
-    const temperature = weatherData.temp.toFixed(2); // Temperature in Celsius
-    const humidity = weatherData.humidity;
-    const weatherDescription = weatherData.weather[0].description;
-
-    weatherEntry.innerHTML = `
-        <h3>${timestamp}</h3>
-        <p class="temp">Temperature: ${temperature}°C</p>
-        <p class="humidity">Humidity: ${humidity}%</p>
-        <p class="weather-description">Condition: ${weatherDescription}</p>
+    result.innerHTML = `
+        <h2>Weather for ${data.name}, ${data.sys.country} on ${date}</h2>
+        <p><strong>Weather Description:</strong> ${weatherDescription}</p>
+        <p><strong>Temperature:</strong> ${temperature}°C</p>
+        <p><strong>Humidity:</strong> ${humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${windSpeed} m/s</p>
     `;
-
-    weatherHistoryContainer.appendChild(weatherEntry);
 }
 
-// Function to display error messages
-function displayErrorMessage(message) {
-    const weatherHistoryContainer = document.getElementById('weather-history');
-    weatherHistoryContainer.innerHTML = `<p class="error-message">${message}</p>`;
+function displayError(message) {
+    const result = document.getElementById("weather-result");
+    result.innerHTML = `<p class="error">${message}</p>`;
 }
