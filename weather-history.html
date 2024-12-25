@@ -3,48 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M4CAST - Weather History</title>
-    <link rel="stylesheet" href="mainpage.css">
-    <link rel="stylesheet" href="weather-history.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Weather Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Include FontAwesome -->
+    
+    <style>
+        /* Theme-related Variables */
+        :root {
+            --primary-color: #568bb6;
+            --text-color: #ffffff; /* Light text color for contrast */
+            --bg-color: #000000; /* Dark black background for body */
+            --card-bg: #000000; /* Dark black background for cards and containers */
+            --sidebar-bg: #000000; /* Updated sidebar background to black */
+            --shadow-color: rgba(0, 0, 0, 0.5); /* Dark shadow color */
+        }
+    
+        .dark-theme {
+            --primary-color: #3595e3; /* Updated primary color for dark theme */
+            --text-color: #fefefe;
+            --bg-color: #000000; /* Dark background */
+            --card-bg: #000000; /* Dark background for cards */
+            --sidebar-bg: #000000; /* Dark background for sidebar */
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+    
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+    
+        /* Sidebar Styling */
+        .side-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background: var(--card-bg);
+            padding: 20px;
+            box-shadow: 2px 0 5px var(--shadow-color);
+            z-index: 1000; /* Sidebar stays on top */
+    }
+    
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3595e3; /* Updated logo color */
+            margin-bottom: 30px;
+        }
+    
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .nav-links li a {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+    
+        .nav-links li a i {
+            margin-right: 10px;
+        }
+    
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    
+        /* Main Content Styling */
+        .container {
+            width: calc(100% - 250px); /* Adjusts to leave space for the sidebar */
+            padding: 20px;
+            margin-left: 250px; /* Prevents overlap with sidebar */
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+            overflow-y: auto;
+            height: 100vh; /* Ensures content container takes full height */
+            transition: margin-left 0.3s ease;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    
+        /* Reduced input fields width to make them shorter */
+        input[type="text"],
+        input[type="date"] {
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 50%; /* Reduced width to 50% for a more compact look */
+            background-color: #333;
+            color: #fff;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+    
+        button {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 50%; /* Button width adjusted to 50% for consistency */
+        }
+    
+        button:hover {
+            background-color: #218838;
+        }
+    
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #444;
+            border: 1px solid #666;
+            border-radius: 4px;
+        }
+    
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+    
+        #theme-switch {
+            display: none;
+        }
+    
+        .switch-label {
+            cursor: pointer;
+            padding: 10px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+    
+        .switch-label i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+    
+        .fa-moon {
+            display: none;
+        }
+    
+        #theme-switch:checked ~ .switch-label .fa-sun {
+            display: none;
+        }
+    
+        #theme-switch:checked ~ .switch-label .fa-moon {
+            display: inline-block;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 100%; /* Sidebar takes up the full width on smaller screens */
+                height: auto;
+                position: relative;
+            }
+    
+            .container {
+                margin-left: 0;
+                width: 100%;
+                padding: 10px;
+            }
+    
+            form {
+                gap: 12px;
+            }
+    
+            .result {
+                background-color: #f8f9fa;
+                color: #333;
+            }
+        }
+    
+    </style>
+    
+    
+
 </head>
-<body class="dark-theme">
+<body>
+
+    <!-- Sidebar -->
+    <div class="side-menu">
+        <div class="logo">Weather App</div>
+        <ul class="nav-links">
+            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="weather-tips.html"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="livemap.html"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Weather Information</h1>
+        <form id="weather-form">
+            <label for="city">Enter city name:</label>
+            <input type="text" id="city" name="city" placeholder="e.g., London" required>
+            
+            <label for="date">Enter date (YYYY-MM-DD):</label>
+            <input type="date" id="date" name="date" required>
+            
+            <button type="submit">Get Weather</button>
+        </form>
+        
+        <div id="weather-result" class="result"></div>
+    </div>
+
+    <!-- Theme Toggle Button -->
     <div class="theme-toggle">
         <input type="checkbox" id="theme-switch">
-        <label for="theme-switch" class="switch-label">
-            <i class="fas fa-sun"></i>
-            <i class="fas fa-moon"></i>
+        <label class="switch-label" for="theme-switch">
+            <i class="fa fa-sun"></i>
+            <i class="fa fa-moon"></i>
         </label>
     </div>
 
-    <nav class="side-menu">
-        <div class="logo">M4CAST</div>
-        <ul class="nav-links">
-            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
-            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
-            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
-        </ul>
-    </nav>
-
-    <div class="main-content">
-        <div class="history-container">
-            <h1>Weather History</h1>
-            <form id="city-form" class="city-form">
-                <label for="city-name">Enter City:</label>
-                <input type="text" id="city-name" placeholder="City Name" required>
-                <label for="country-code">Enter Country Code (e.g., US, IN):</label>
-                <input type="text" id="country-code" placeholder="Country Code" required>
-                <button type="submit">Get Weather History</button>
-            </form>
-
-            <div id="weather-history" class="weather-history"></div>
-        </div>
-    </div>
-
+    <!-- Link to external script -->
     <script src="weather-history.js"></script>
+
+    <script>
+        const themeSwitch = document.getElementById('theme-switch');
+
+        // Check for saved theme in localStorage
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeSwitch.checked = true; // Show sun icon if dark theme is active
+        }
+
+        // Toggle theme
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
+
