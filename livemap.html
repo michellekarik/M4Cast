@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Weather Map</title>
+    <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+       
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .side-menu {
+            width: 250px; /* Sidebar width */
+            background-color: #333;
+            height: 100vh; /* Full height of the viewport */
+            position: fixed; /* Fix sidebar to the left side */
+            top: 0;
+            left: 0;
+            padding-top: 20px; /* Padding at the top */
+        }
+
+        /* Map styles */
+        #map {
+            margin-left: 10px; /* Adjusted the margin to reduce the space between the sidebar and map */
+            height: 100vh; /* Full height of the viewport */
+            width: calc(100% - 260px); /* Subtracting more to account for the smaller margin */
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar (Left-Side Menu) -->
+    <nav class="side-menu">
+        <div class="logo">M4CAST</div>
+        <ul class="nav-links">
+            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="weather-tips.html"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="livemap.html"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+        </ul>
+    </nav>
+
+    <h1>Live Weather Map</h1>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="livemap.js"></script>
+</body>
+</html>
