@@ -16,46 +16,46 @@
 
         /* Sidebar Styling (Fixed Position, Consistent with mainpage.html) */
         .side-menu {
-            width: 200px;  /* Same width as in mainpage.html */
-            background-color: var(--card-bg);  /* Use the same background as in mainpage */
-            color: var(--text-color);  /* Ensure text color is consistent */
-            padding-top: 20px;
+            width: 200px;  /* Ensure it's the same width as the mainpage */
+            background-color: var(--card-bg);  /* Consistent background color */
+            color: var(--text-color);  /* Consistent text color */
+            padding-top: 20px;  /* Ensure the padding on top is the same */
             position: fixed;
             height: 100%;
             box-shadow: 2px 0 5px var(--shadow-color);
             z-index: 1000;
+            box-sizing: border-box;  /* Added to make sure padding and width are calculated correctly */
         }
 
-        .side-menu .logo {
-            text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            color: var(--primary-color);  /* Same color as in mainpage */
+        /* Ensure the main content does not overlap the sidebar */
+        .main-content {
+            margin-left: 200px;  /* Match the width of the sidebar exactly */
+            padding: 20px;  /* Consistent padding with the rest of the page */
+            width: calc(100% - 200px);  /* Ensure content width is adjusted to sidebar */
+            overflow-y: auto;
         }
 
-        .side-menu .nav-links {
-            list-style: none;
-            padding: 0;
-        }
-
+        /* Adjust navigation links to match those on the main page */
         .side-menu .nav-links li {
             margin: 15px 0;
             text-align: center;
         }
 
         .side-menu .nav-links a {
-            color: var(--text-color);  /* Ensure color consistency */
+            color: var(--text-color);  /* Ensure consistency in text color */
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.2em;  /* Consistent font size */
             display: block;
-            padding: 10px;
+            padding: 10px 15px;  /* Match padding of nav links on the main page */
+            box-sizing: border-box;  /* Ensure the padding is inside the width */
         }
 
         .side-menu .nav-links a:hover,
         .side-menu .nav-links a.active {
-            background-color: var(--primary-color);  /* Same active hover background as in mainpage */
-            color: white;
+            background-color: var(--primary-color);  /* Consistent hover background */
+            color: white;  /* Ensure text color changes */
         }
+
 
         /* Main content area (Make space for the sidebar) */
         .main-content {
@@ -154,12 +154,12 @@
         <div class="logo">M4CAST</div>
         <ul class="nav-links">
             <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
             <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
-            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="weather-tips.html"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+            <li><a href="livemap.html"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
         </ul>
     </nav>
 
