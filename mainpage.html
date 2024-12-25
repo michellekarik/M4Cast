@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M4CAST</title>
+    <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="switch-label">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </label>
+    </div>
+
+    <!-- Navigation Bar (Left-Side Menu) -->
+    <nav class="side-menu">
+        <div class="logo">M4CAST</div>
+        <ul class="nav-links">
+            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Video Background -->
+    <div class="video-background">
+        <iframe id="weather-video"
+            src="https://www.youtube.com/embed/Y4jQ9UhWwi80iAp7?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&showinfo=0"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Weather Container -->
+    <div class="weather-container">
+        <div class="weather-card">
+            <h1>London, UK</h1> <!-- This will be dynamically updated -->
+            <div class="weather-info">
+                <div class="temperature">
+                    <span class="temp">22°C</span>
+                    <span class="feels-like">Feels like: 20°C</span>
+                </div>
+                <div class="weather-description">
+                    Clear sky
+                </div>
+                <div class="weather-icon">
+                    <i class="fas fa-sun"></i> <!-- Weather icon dynamically updated -->
+                </div>
+            </div>
+            <div class="weather-details">
+                <div class="detail wind-speed">Wind: 5 km/h</div>
+                <div class="detail humidity">Humidity: 60%</div>
+                <div class="detail pressure">Pressure: 1015 hPa</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mainpage.js"></script>
+</body>
+</html>
