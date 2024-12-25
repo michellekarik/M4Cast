@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M4CAST - Weather History</title>
+    <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="weather-history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="switch-label">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </label>
+    </div>
+
+    <nav class="side-menu">
+        <div class="logo">M4CAST</div>
+        <ul class="nav-links">
+            <li><a href="mainpage.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="weather-history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips & Advice</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Live Map</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="history-container">
+            <h1>Weather History</h1>
+            <form id="city-form" class="city-form">
+                <label for="city-name">Enter City:</label>
+                <input type="text" id="city-name" placeholder="City Name" required>
+                <label for="country-code">Enter Country Code (e.g., US, IN):</label>
+                <input type="text" id="country-code" placeholder="Country Code" required>
+                <button type="submit">Get Weather History</button>
+            </form>
+
+            <div id="weather-history" class="weather-history"></div>
+        </div>
+    </div>
+
+    <script src="weather-history.js"></script>
+</body>
+</html>
