@@ -1,23 +1,18 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Root Variables */
 :root {
     --primary-color: #568bb6;
     --text-color: #000000;
-    --bg-color: #ffffff;
+    --bg-color: #ffffff; /* Light background */
     --card-bg: #f8f3f3;
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --main-content-bg: #121212; /* Darker background for main content */
+    --sidebar-bg: #1f1f1f; /* Sidebar dark background */
+    --card-shadow: rgba(0, 0, 0, 0.2); /* Darker shadow for depth */
 }
 
 .dark-theme {
     --primary-color: #3595e3;
     --text-color: #fefefe;
-    --bg-color: #1a1a1a;
+    --bg-color: #1a1a1a; /* Dark background */
     --card-bg: #000000;
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
@@ -29,33 +24,102 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
     transition: all 0.3s ease;
-    overflow: visible;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-/* Weather Animations Container */
+/* Weather Container */
 .weather-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 100vh;
-    width: 100%;
-    background: linear-gradient(to bottom, #f0efef, #4a4a4a);
+    width: 80%; /* Reduced width for spacing */
+    background: var(--main-content-bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding: 20px; /* Add padding for some space */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px var(--card-shadow); /* Shadow for depth */
+    margin-left: 220px; /* Ensures it doesn't overlap with the sidebar */
+}
+
+/* Weather Form Card */
+.weather-form-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    text-align: center;
+    margin-top: 30px; /* Spacing from other content */
+}
+
+/* Header */
+h1 {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: var(--text-color);
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Button */
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1976d2;
+}
+
+/* Result Box */
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #090b0c;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: var(--text-color);
 }
 
 /* Sidebar */
 .side-menu {
     position: fixed;
-    left: 0;
     top: 0;
-    width: 200px;
+    left: 0;
+    width: 220px; /* Increased width for better spacing */
     height: 100%;
-    background: var(--card-bg);
+    background: var(--sidebar-bg);
     padding: 20px;
     box-shadow: 2px 0 5px var(--shadow-color);
     z-index: 1000;
@@ -94,43 +158,6 @@ body {
     color: white;
 }
 
-/* Tips Container Styling */
-.tips-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: #2a2a2a;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.tips-container h1 {
-    text-align: center;
-    font-size: 32px;
-    color: #4CAF50;
-    margin-bottom: 30px;
-}
-
-.tip {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    margin-bottom: 30px;
-}
-
-.tip h2 {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.tip p {
-    font-size: 16px;
-    color: var(--text-color);
-    margin: 5px 0;
-}
-
 /* Theme Toggle */
 .theme-toggle {
     position: fixed;
@@ -166,19 +193,4 @@ body {
 
 #theme-switch:checked ~ .switch-label .fa-moon {
     display: inline-block;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0; /* Remove space for sidebar on mobile */
-    }
-
-    .tips-container {
-        padding: 20px;
-    }
-
-    .tip {
-        padding: 15px;
-    }
 }
